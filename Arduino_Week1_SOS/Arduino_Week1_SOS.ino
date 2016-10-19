@@ -18,7 +18,7 @@ void blinkLed(int pin, int pauseTime) {
 
 void repeatBlink(int repetitions, int pin, int pauseTime) {
   int i = 0;
-  
+
   for(i = 0; i < repetitions; i = i + 1) {
     blinkLed(pin, pauseTime);
   }
@@ -28,10 +28,10 @@ void repeatBlink(int repetitions, int pin, int pauseTime) {
 void loop() {
   // - - -
   repeatBlink(3, ledPin, longPause);
-  
+
   // . . .
   repeatBlink(3, ledPin, shortPause);
-  
+
   // - - -
   repeatBlink(3, ledPin, longPause);
 }
