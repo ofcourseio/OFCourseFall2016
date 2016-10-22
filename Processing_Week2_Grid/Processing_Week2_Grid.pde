@@ -25,9 +25,26 @@ void drawGrid(int n) {
   }
 }
 
+void drawCircles(int n) {
+  ellipseMode(CENTER);
+
+  stroke(120);
+
+  for (int i = 0; i < n; i = i + 1) {
+    int size = (width / n) * (n - i);
+
+    float d = distance(mouseX, mouseY, width / 2, height / 2);
+
+    fill(abs(size - d * 3.0));
+    ellipse(width / 2, height / 2, size, size);
+  }
+}
+
 void draw() {
   background(120);
   noStroke();
 
-  drawGrid(20);
+  //drawGrid(20);
+
+  drawCircles(20);
 }
