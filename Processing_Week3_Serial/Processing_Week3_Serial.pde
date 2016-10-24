@@ -2,7 +2,8 @@ import processing.serial.*;
 
 Serial serial;
 
-int size = 0;
+float x = 0;
+float y = 0;
 
 void setup() {
   size(400, 400);
@@ -19,7 +20,8 @@ void setup() {
 void draw() {
   background(0);
 
-  ellipse(width / 2, height / 2, size, size);
+  int size = 6;
+  ellipse(x, y, size, size);
 }
 
 void serialEvent(Serial serialPort) {
@@ -29,7 +31,13 @@ void serialEvent(Serial serialPort) {
     // textFromSerial => "123\n"
     // trim(textFromSerial) => "123"
     // int("123") => 123
+    // size = int(trim(textFromSerial));
 
-    size = int(trim(textFromSerial));
+    String textValues[] = split(textFromSerial, " ");
+
+    x = (int(trim(textValues[0])) / 1024.0) * width;
+    y = (int(trim(textValues[1])) / 1024.0) * height;
+
+    println(x + " " + y);
   }
 }
